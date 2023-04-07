@@ -3,7 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/drawable-anydpi/ic_barometer.xml" value="0.1" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/drawable/bar.xml" value="0.1" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/drawable/barometer.xml" value="0.1" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/drawable/ic_frost.xml" value="0.1" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/drawable/ic_humidity.xml" value="0.1" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/drawable/ic_windspeed.xml" value="0.1685" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Walter/AndroidStudioProjects/adrymic/app/src/main/res/layout/current_info.xml" value="0.33" />
       </map>
     </option>
   </component>
