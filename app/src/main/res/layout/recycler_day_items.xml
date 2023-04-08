@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:baselineAligned="false"
+    android:gravity="center">
+
+
+    <TextView
+        android:id="@+id/txt_day_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity ="center"
+        android:textColor="@color/white"
+        android:text="05-04" />
+    <TextView
+        android:id="@+id/txt_day_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity ="center"
+        android:textColor="@color/white"
+        android:text="Tuesday" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/img_weatherstate"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/ic_sunny"
+            />
+
+        <TextView
+            android:id="@+id/txt_weatherstate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear Skies"
+            android:gravity ="center"
+            android:textColor="@color/white"
+            />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txt_day_temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity ="center"
+        android:textColor="@color/white"
+        android:text="23 °C" />
+</LinearLayout>

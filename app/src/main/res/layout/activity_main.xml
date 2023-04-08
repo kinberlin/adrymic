@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@color/greenish"
     android:orientation="vertical"
+    android:layout_margin="10dp"
     tools:context=".MainActivity">
 
 
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="clear sky"
+            android:gravity = "right"
             android:textColor="@color/white" />
     </LinearLayout>
     <LinearLayout
@@ -88,5 +90,13 @@
         android:text="Today 32 / 32 °C"
         />
     <include layout="@layout/current_info"/>
+
+    <Button
+        android:id="@+id/refreshbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/teal_200"
+        android:text="Rafraichir" />
 
 </LinearLayout>
