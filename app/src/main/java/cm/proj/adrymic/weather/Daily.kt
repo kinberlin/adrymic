@@ -1,4 +1,4 @@
-package cm.proj.adrymic
+package cm.proj.adrymic.weather
 
 data class Daily(
     val sunrise: List<String>,

@@ -1,4 +1,4 @@
-package cm.proj.adrymic
+package cm.proj.adrymic.weather
 
 data class Hourly(
     val apparent_temperature: List<Double>,
