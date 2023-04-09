@@ -37,6 +37,7 @@ class DayItemAdapter(private val mList: List<DayItemViewModel>) : RecyclerView.A
 
     // return the number of the items in the list
     override fun getItemCount(): Int {
+
         return mList.size
     }
 
