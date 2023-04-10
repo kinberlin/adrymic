@@ -36,7 +36,7 @@ class testactivity : AppCompatActivity() {
                 Log.d("forecast: ", result.body().toString())
         }
 
-        cardView = findViewById(R.id.base_cardview)
+       /* cardView = findViewById(R.id.base_cardview)
         val arrow = findViewById(R.id.show) as ImageView
         val hiddenGroup = findViewById(R.id.card_group) as Group
         arrow.setOnClickListener { view ->
@@ -49,6 +49,6 @@ class testactivity : AppCompatActivity() {
                 hiddenGroup.setVisibility(View.VISIBLE)
                 arrow.setImageResource(R.drawable.ic_arrow_up_float)
             }
-        }
+        }*/
     }
 }
