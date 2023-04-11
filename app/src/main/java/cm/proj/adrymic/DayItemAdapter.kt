@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class DayItemAdapter(private val mList: List<DayItemViewModel>) : RecyclerView.Adapter<DayItemAdapter.ViewHolder>() {
+class DayItemAdapter(private val mList: MutableList<DayItemViewModel>) : RecyclerView.Adapter<DayItemAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

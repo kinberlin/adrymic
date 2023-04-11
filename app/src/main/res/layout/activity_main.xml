@@ -3,6 +3,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/greenish"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -11,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/greenish"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="right"
+                android:gravity="center"
                 android:text="clear sky"
                 android:textColor="@color/white" />
         </LinearLayout>
@@ -73,13 +73,14 @@
                 android:text="05:54:39"
                 android:textColor="@color/white" />
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <ImageView
+                android:id="@+id/img_temp_icon"
+                android:layout_width="20"
+                android:layout_height="20"
                 android:layout_weight="1"
-                android:text="clear sky"
-                android:textColor="@color/white" />
+                android:gravity="center"
+                app:srcCompat="@drawable/ic_round_hot" />
+
         </LinearLayout>
 
         <TextView
@@ -101,24 +102,18 @@
             android:textColor="@color/white" />
 
         <include layout="@layout/current_info" />
-
-        <include layout="@layout/recycler_view_dailyinfo" />
-
-        <Button
-            android:id="@+id/refreshbtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/teal_200"
-            android:text="Rafraichir" />
+        <include
+            layout="@layout/recycler_view_dailyinfo" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_dailyinfo1"
+    <Button
+        android:id="@+id/refreshbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        tools:itemCount="5"
-        tools:listitem="@layout/recycler_day_items" />
-
+        android:layout_weight="1"
+        android:background="@color/teal_200"
+        android:text="Rafraichir"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
