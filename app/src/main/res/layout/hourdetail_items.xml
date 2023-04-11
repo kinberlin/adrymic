@@ -1,6 +1,276 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:baselineAligned="false"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="4"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/txt_hourdetail_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3:00 AM"
+            android:textSize="24dp"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/txt_hourdetail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="May 11, 2023"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/img_hourdetail_dayornight"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/ic_night"
+        />
+
+    <TextView
+        android:id="@+id/txt_day_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity ="center"
+        android:textSize = "30dp"
+        android:textColor="@color/black"
+        android:text="32 °" />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Humidity : "
+            android:layout_weight="1"
+            android:textStyle = "bold"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_humidity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="21%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chance Rain :"
+            android:textStyle = "bold"
+            android:layout_weight="1"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_chancerain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wind Speed : "
+            android:layout_weight="1"
+            android:textStyle = "bold"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_windspeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="21%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Surface Pressure :"
+            android:textStyle = "bold"
+            android:layout_weight="1"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_surfacepressure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Snow Fall : "
+            android:layout_weight="1"
+            android:textStyle = "bold"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_snowfall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="21%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Snow Depth : "
+            android:textStyle = "bold"
+            android:layout_weight="1"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_snowdepth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wind Direction : "
+            android:layout_weight="1"
+            android:textStyle = "bold"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_winddirection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="21%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cloud Cover : "
+            android:textStyle = "bold"
+            android:layout_weight="1"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_cloudcover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2%"
+            android:layout_weight="1"
+            android:gravity ="center"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Evapotranspiration "
+            android:layout_weight="1"
+            android:textStyle = "bold"
+            android:gravity ="right"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/txt_hourdetail_evapotranspiration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="21%"
+            android:layout_weight="1"
+            android:gravity ="left"
+            android:textColor="@color/black"
+            />
+
+    </LinearLayout>
+</LinearLayout>
