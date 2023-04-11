@@ -21,10 +21,11 @@
 
         <TextView
             android:id="@+id/textView"
+            style="@style/Widget.AppCompat.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Adrymic"
+            android:text="Douala, Cameroon"
             android:textColor="@color/white" />
 
         <TextView
@@ -63,6 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -75,8 +77,8 @@
 
             <ImageView
                 android:id="@+id/img_temp_icon"
-                android:layout_width="20"
-                android:layout_height="20"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 app:srcCompat="@drawable/ic_round_hot" />
@@ -90,6 +92,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="32 °C"
+            android:layout_margin="10dp"
             android:textColor="@color/white"
             android:textSize="40dp" />
 
@@ -99,12 +102,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Today 32 / 32 °C"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
 
         <include layout="@layout/current_info" />
-        <include
-            layout="@layout/recycler_view_dailyinfo" />
+
+        <include layout="@layout/recycler_view_dailyinfo" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/moredetailbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/teal_200"
+        android:text="view more"
+        app:layout_constraintBottom_toTopOf="@+id/refreshbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/refreshbtn"
@@ -112,7 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/teal_200"
-        android:text="Rafraichir"
+        android:text="Refresh"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

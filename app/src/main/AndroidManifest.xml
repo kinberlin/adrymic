@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cm.proj.adrymic">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,11 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Adrymic">
         <activity
+            android:name=".hourlyDetails"
+            android:exported="false" />
+        <activity
             android:name=".townActivity"
             android:exported="false" />
         <activity
             android:name=".testactivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
