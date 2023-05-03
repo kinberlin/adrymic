@@ -22,8 +22,22 @@ class HourDetailAdapter(private val mList: Hourly) : RecyclerView.Adapter<HourDe
 
     // binds the list items to a view
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        var ti = Times();
+        holder.txt_hourdetail_time.text = mList.time[position]
+        holder.txt_hourdetail_date.text = ti.getDate()
+        if(ti.getHour().toInt() >5)
+        {
+        holder.img_hourdetail_dayornight.setImageResource(R.drawable.ic_day)
+        }
+        else{
+            holder.img_hourdetail_dayornight.setImageResource(R.drawable.ic_night)
+        }
+        holder.txt_hourdetail_temperature.text = mList.temperature_2m[position].toString() +" °C"
+        holder.txt_hourdetail_humidity.text = mList.relativehumidity_2m[position].toString() +"%"
+        holder.txt_hourdetail_chancerain.text = (mList.precipitation_probability[position] * 100).toString() + "%"
+        holder.txt_hourdetail_windspeed.text = mList.windspeed_10m[position].toString() +"m/s"
 
-// in process
+
 
     }
 
@@ -38,7 +52,7 @@ class HourDetailAdapter(private val mList: Hourly) : RecyclerView.Adapter<HourDe
         val txt_hourdetail_time: TextView= itemView.findViewById(R.id.txt_hourdetail_time)
         val txt_hourdetail_date: TextView = itemView.findViewById(R.id.txt_hourdetail_date)
         val img_hourdetail_dayornight: ImageView = itemView.findViewById(R.id.img_hourdetail_dayornight)
-        val txt_day_date: TextView = itemView.findViewById(R.id.txt_day_date)
+        val txt_hourdetail_temperature: TextView = itemView.findViewById(R.id.txt_hourdetail_temperature)
         val txt_hourdetail_humidity: TextView = itemView.findViewById(R.id.txt_hourdetail_humidity)
         val txt_hourdetail_chancerain: TextView = itemView.findViewById(R.id.txt_hourdetail_chancerain)
         val txt_hourdetail_windspeed: TextView = itemView.findViewById(R.id.txt_hourdetail_windspeed)
