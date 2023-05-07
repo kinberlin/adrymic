@@ -7,8 +7,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import cm.proj.adrymic.weather.Hourly
+import cm.proj.adrymic.weather.HourlyUnits
 
-class HourDetailAdapter(private val mList: Hourly) : RecyclerView.Adapter<HourDetailAdapter.ViewHolder>() {
+class HourDetailAdapter(private val mList: Hourly, val unit : HourlyUnits) : RecyclerView.Adapter<HourDetailAdapter.ViewHolder>() {
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -32,12 +33,16 @@ class HourDetailAdapter(private val mList: Hourly) : RecyclerView.Adapter<HourDe
         else{
             holder.img_hourdetail_dayornight.setImageResource(R.drawable.ic_night)
         }
-        holder.txt_hourdetail_temperature.text = mList.temperature_2m[position].toString() +" °C"
-        holder.txt_hourdetail_humidity.text = mList.relativehumidity_2m[position].toString() +"%"
-        holder.txt_hourdetail_chancerain.text = (mList.precipitation_probability[position] * 100).toString() + "%"
-        holder.txt_hourdetail_windspeed.text = mList.windspeed_10m[position].toString() +"m/s"
-
-
+        holder.txt_hourdetail_temperature.text = mList.temperature_2m[position].toString() +" "+ unit.temperature_2m
+        holder.txt_hourdetail_humidity.text = mList.relativehumidity_2m[position].toString() +" " +unit.relativehumidity_2m
+        holder.txt_hourdetail_chancerain.text = (mList.precipitation_probability[position] * 100).toString() + " " + unit.precipitation_probability
+        holder.txt_hourdetail_windspeed.text = mList.windspeed_10m[position].toString() +" " + unit.winddirection_10m
+        holder.txt_hourdetail_surfacepressure.text = mList.surface_pressure[position].toString() +" "+ unit.surface_pressure
+        holder.txt_hourdetail_snowfall.text = mList.snowfall[position].toString() + " " + unit.snowfall
+        holder.txt_hourdetail_snowdepth.text =mList.snow_depth[position].toString() + " " + unit.snow_depth
+        holder.txt_hourdetail_winddirection.text = mList.winddirection_10m[position].toString() + " " + unit.winddirection_10m
+        holder.txt_hourdetail_cloudcover.text = mList.cloudcover[position].toString() + " " + unit.cloudcover
+        holder.txt_hourdetail_evapotranspiration.text = mList.evapotranspiration[position].toString() + " "+ unit.evapotranspiration
 
     }
 
