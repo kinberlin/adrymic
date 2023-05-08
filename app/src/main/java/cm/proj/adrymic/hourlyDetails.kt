@@ -5,22 +5,37 @@ import android.os.Bundle
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cm.proj.adrymic.weather.Hourly
+import cm.proj.adrymic.weather.HourlyUnits
+import cm.proj.adrymic.weather.weather_forecast
+import com.google.gson.Gson
 
 class hourlyDetails : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hourly_details)
+        var hol : Hourly? = null;
+        var holu: HourlyUnits? = null
+        val gson = Gson()
+        var unserialise : String
 
-        var hl = findViewById<RecyclerView>(R.id.recyclerview_hourlyinfo)
-        var adapter = HourDetailAdapter(data)
-        data.add(DayItemViewModel(R.drawable.ic_sunny,"15-04","Saturday","Clear Skies", "25 °C "))
-        cardView = findViewById(R.id.base_cardview)
-        val arrow = findViewById<ImageView>(R.id.show)
-        val dayinfo = findViewById<RecyclerView>(R.id.recyclerview_dailyinfo)
+        val hourinfo = findViewById<RecyclerView>(R.id.recyclerview_hourlyinfo)
         val layoutManager = LinearLayoutManager(applicationContext)
-        dayinfo.layoutManager = layoutManager
-        dayinfo.adapter = adapter
+        hourinfo.layoutManager = layoutManager
+        // checking if the intent has extra
+        if (intent.hasExtra("wf")) {
+            // get the Serializable data model class with the details in it
+            (intent.getSerializableExtra("wf") as String).also { unserialise = it }
+            var wf = gson.fromJson(unserialise, weather_forecast::class.java)
+            hol = wf.hourly
+            holu = wf.hourly_units
+            var adapter = HourDetailAdapter(hol,holu)
+            hourinfo.adapter = adapter
+            adapter.notifyDataSetChanged()
+        }
 
-        adapter.notifyDataSetChanged()
+
+
+
     }
 }
