@@ -1,12 +1,15 @@
 package cm.proj.adrymic
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.Group
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView
 import cm.proj.adrymic.Interface.ApiHelper
 import cm.proj.adrymic.weather.APIFetchModel
 import cm.proj.adrymic.weather.weather_forecast
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import com.google.gson.Gson
+import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,22 +32,49 @@ class MainActivity : AppCompatActivity() {
         DayItemViewModel(R.drawable.ic_cloudy,"14-04","Friday","Cloudy", "25 °C ")
     )
     lateinit var adapter : DayItemAdapter
+    var  wef : weather_forecast? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        adapter = DayItemAdapter(data)
 
+        var ti : Time = Time()
+        adapter = DayItemAdapter(data)
+        var mordetail = findViewById<Button>(R.id.moredetailbtn)
+        var currenttemperature = findViewById<TextView>(R.id.txt_dailyInfo_temperature)
+        var apparenttemperature = findViewById<TextView>(R.id.textView7)
+        var currenthumidity = findViewById<TextView>(R.id.txt_dailyInfo_humidity)
+        var currentpressure = findViewById<TextView>(R.id.txt_dailyInfo_pressure)
+        var currentwindspeed = findViewById<TextView>(R.id.txt_dailyInfo_windspeed)
         val forecast = APIFetchModel.getInstances().create(ApiHelper::class.java)
         // launching a new coroutine
-        GlobalScope.launch {
-            val result = forecast.getWeather()
-            if (result != null)
+        GlobalScope.launch(Dispatchers.Main) {
+            var urls = "https://api.open-meteo.com/v1/forecast?latitude=4.05&longitude=9.70&hourly=temperature_2m," +
+                    "relativehumidity_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,snow_depth,surface_pressure,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,evapotranspiration,windspeed_10m,winddirection_10m,temperature_80m&daily=sunrise,sunset,uv_index_max,uv_index_clear_sky_max,windspeed_10m_max&" +
+                    "current_weather=true&start_date="+ti.getDate()+"&end_date="+ti.addDaystoDate(3)+"&timezone=auto"
+            val result = forecast.getWeathers(urls)
+            //val result = forecast.getWeather()
+            delay(3000)
+            Log.d("forecast: ", result.toString())
+            if (result.body() != null)
             // Checking the results
-                Log.d("forecast: ", result.body().toString())
-            updateView(result.body() as weather_forecast)
-            adapter.notifyDataSetChanged()
+                //Log.d("forecast: ", result.body().toString())
+            { var resul = result.body() as weather_forecast;
+                wef = resul
+                    currenttemperature.text = resul.current_weather.temperature.toString() +"°C"
+            currentwindspeed.text = resul.current_weather.windspeed.toString() + "km/h"
+                var currdt = (ti.getDate()+"T"+(ti.getHourInt())+":00")
+                for(x in 0..(resul.hourly.time.size-1))
+                {
+                    if(resul.hourly.time[x] == currdt)
+                        {
+                            apparenttemperature.text = resul.hourly.apparent_temperature[x].toString()  +"°C"
+                        }
+                }
+
+            updateView(resul)
+            adapter.notifyDataSetChanged()}
         }
 
 
@@ -67,6 +97,16 @@ class MainActivity : AppCompatActivity() {
                 TransitionManager.beginDelayedTransition(cardView, AutoTransition())
                 hiddenGroup.visibility = View.VISIBLE
                 arrow.setImageResource(R.drawable.ic_arrow_up_float)
+            }
+        }
+        mordetail.setOnClickListener{
+            if(wef!=null){
+                val gson = Gson()
+                val json = gson.toJson(wef)
+            val intent = Intent(this, hourlyDetails::class.java)
+            intent.putExtra("wf", json!!)
+            startActivity(intent)
+            //finish()
             }
         }
     }
@@ -100,7 +140,7 @@ class MainActivity : AppCompatActivity() {
           data.clear()
          var dateString = "2022-08-15"
          var format = "yyyy-MM-dd"
-         for (x in 0..wf.hourly.time.size step 8) {
+         for (x in 0 until (wf.hourly.time.size-1) step 8) {
              if (wf.hourly.temperature_2m[x] > 19 && wf.hourly.temperature_2m[x] < 27) {
                  data.add(DayItemViewModel(R.drawable.ic_rain,wf.current_weather.time,getDayOfWeek(getFirst10Chars(wf.hourly.time[x]),format),"Rain",wf.hourly.temperature_2m[x].toString()+wf.hourly_units.temperature_2m))
              }

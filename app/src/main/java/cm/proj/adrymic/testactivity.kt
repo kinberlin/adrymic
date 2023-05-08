@@ -27,7 +27,7 @@ class testactivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_testactivity)
 
-        val forecast = APIFetchModel.getInstances().create(ApiHelper::class.java)
+        /*val forecast = APIFetchModel.getInstances().create(ApiHelper::class.java)
         // launching a new coroutine
         GlobalScope.launch {
             val result = forecast.getWeather()
@@ -36,7 +36,7 @@ class testactivity : AppCompatActivity() {
                 Log.d("forecast: ", result.body().toString())
         }
 
-       /* cardView = findViewById(R.id.base_cardview)
+        cardView = findViewById(R.id.base_cardview)
         val arrow = findViewById(R.id.show) as ImageView
         val hiddenGroup = findViewById(R.id.card_group) as Group
         arrow.setOnClickListener { view ->

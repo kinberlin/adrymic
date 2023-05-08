@@ -26,7 +26,9 @@ class HourDetailAdapter(private val mList: Hourly, val unit : HourlyUnits) : Rec
         var ti = Times();
         holder.txt_hourdetail_time.text = mList.time[position]
         holder.txt_hourdetail_date.text = ti.getDate()
-        if(ti.getHour().toInt() >5)
+        var gt = mList.time[position][11] +""+ mList.time[position][12]
+
+        if(gt.toInt() in 6..17)
         {
         holder.img_hourdetail_dayornight.setImageResource(R.drawable.ic_day)
         }
@@ -36,7 +38,7 @@ class HourDetailAdapter(private val mList: Hourly, val unit : HourlyUnits) : Rec
         holder.txt_hourdetail_temperature.text = mList.temperature_2m[position].toString() +" "+ unit.temperature_2m
         holder.txt_hourdetail_humidity.text = mList.relativehumidity_2m[position].toString() +" " +unit.relativehumidity_2m
         holder.txt_hourdetail_chancerain.text = (mList.precipitation_probability[position] * 100).toString() + " " + unit.precipitation_probability
-        holder.txt_hourdetail_windspeed.text = mList.windspeed_10m[position].toString() +" " + unit.winddirection_10m
+        holder.txt_hourdetail_windspeed.text = mList.windspeed_10m[position].toString() +" " + unit.windspeed_10m
         holder.txt_hourdetail_surfacepressure.text = mList.surface_pressure[position].toString() +" "+ unit.surface_pressure
         holder.txt_hourdetail_snowfall.text = mList.snowfall[position].toString() + " " + unit.snowfall
         holder.txt_hourdetail_snowdepth.text =mList.snow_depth[position].toString() + " " + unit.snow_depth
